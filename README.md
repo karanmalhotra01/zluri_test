@@ -40,11 +40,14 @@
 
 
 # Points to achieve:-
-- Created data ingestion pipeline to perform the parallel processing of files into the table with minimal gab of 1 second.
-- This is achieved using the variable(ts) in line #22 of the code and this variable is appended in the intermediate tables to keep multiple versions of raw data in case of parallel processing.
-- And finally, I am merging the data from the raw dataset to the final table i.e zluri_test.
+- Code is written in standard formatted python version 3.9.
+- It supports for regular non-blocking parallel ingestion of the given file into a table.
+- This is achieved using the variable(ts) in line #22 of the code and this variable is appended in the intermediate tables and snowflake stages to keep multiple versions of raw data in case of parallel processing.
+- Support for updating existing products in the table based on `sku` as the primary key using the merge statement in line #51 of the code.
 - I am de-duping the records on SKU (in the raw table) while merging them into the final table.
 - Handled insert and update based on SKUs in Merge query. (#51)
+- And finally, I am merging the data from the raw dataset to the final table i.e zluri_test.
+- An aggregated table on above rows is created "zluri_aggregated_data".
 
 
 # Scope of Improvement:-
